@@ -1,10 +1,10 @@
 var cailven;
 (function (cailven) {
-    var VideoCanvas = (function () {
-        function VideoCanvas() {
+    var H5Video = (function () {
+        function H5Video() {
             this.containerName = "";
         }
-        VideoCanvas.prototype.destroy = function () {
+        H5Video.prototype.destroy = function () {
             if (this.isVid) {
                 this.player.muted;
                 this.player.pause();
@@ -15,7 +15,7 @@ var cailven;
                 this.player.destroy();
             }
         };
-        VideoCanvas.prototype.play = function () {
+        H5Video.prototype.play = function () {
             if (this.isVid) {
                 var s = this;
                 s.seek(0.0);
@@ -25,7 +25,7 @@ var cailven;
                 this.player.play();
             }
         };
-        VideoCanvas.prototype.setCanvas = function (vid_url) {
+        H5Video.prototype.setCanvas = function (vid_url) {
             this.isVid = false;
             var s = this;
             var str = "<canvas id='video-canvas'></canvas>";
@@ -50,7 +50,7 @@ var cailven;
             this.player.audioOut.unlock(onUnlocked);
             document.addEventListener('touchstart', onTouchStart, false);
         };
-        VideoCanvas.prototype.setVideo = function (vid_url) {
+        H5Video.prototype.setVideo = function (vid_url) {
             var str = '<video id="video" preload="preload" src="' + vid_url + '" width="100%"  webkit-playsinline="true" playsinline x-webkit-airplay="true" x5-video-player-type="h5" x5-video-player-fullscreen="true"></video>';
             $(this.containerName).html(str);
             this.isVid = true;
@@ -64,7 +64,7 @@ var cailven;
                 $("#video").css("top", _y * -1 + "px");
             }, 200);
         };
-        VideoCanvas.prototype.seek = function (t) {
+        H5Video.prototype.seek = function (t) {
             if (this.isVid) {
                 this.player.currentTime = t;
             }
@@ -72,7 +72,7 @@ var cailven;
                 this.player.seek(t);
             }
         };
-        VideoCanvas.prototype.init = function (mp4, vid, container) {
+        H5Video.prototype.init = function (mp4, vid, container) {
             var s = this;
             if (this.isInWX()) {
                 this.setVideo(mp4);
@@ -87,7 +87,7 @@ var cailven;
             }
             this.containerName = container;
         };
-        VideoCanvas.prototype.isIos = function () {
+        H5Video.prototype.isIos = function () {
             var u = navigator.userAgent;
             if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
                 return true;
@@ -96,7 +96,7 @@ var cailven;
                 return false;
             }
         };
-        VideoCanvas.prototype.isInWX = function () {
+        H5Video.prototype.isInWX = function () {
             var u = navigator.userAgent, app = navigator.appVersion;
             var ua = navigator.userAgent.toLowerCase();
             var t = ua.match(/MicroMessenger/i) + "";
@@ -107,8 +107,8 @@ var cailven;
                 return false;
             }
         };
-        return VideoCanvas;
+        return H5Video;
     }());
-    cailven.VideoCanvas = VideoCanvas;
+    cailven.H5Video = H5Video;
 })(cailven || (cailven = {}));
 //# sourceMappingURL=H5Video.js.map

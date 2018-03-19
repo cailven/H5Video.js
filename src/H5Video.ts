@@ -1,5 +1,5 @@
 module cailven {
-    export class VideoCanvas {
+    export class H5Video {
         constructor() {
         }
 
