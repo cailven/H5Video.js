@@ -7,17 +7,48 @@
 
 ## 解决思路
 
-IOS 微信内：
+### IOS 微信内：
+支持<video>的webkit-playsinline属性，因此直接使用
 
-IOS 非微信：
+### IOS 非微信：
+例如iphone下的微博，QQ浏览器等。
+使用了[iphone-inline-video项目](https://github.com/bfred-it/iphone-inline-video),这个项目利用修改ios下视频播放器样式的方法来屏蔽弹出，效果还不错。
 
-安卓 微信内：
+### 安卓 微信内：
+因为微信安卓版使用了腾讯X5内核，因此可以使用X5的相关属性playsinline x-webkit-airplay，x5-video-player-type，x5-video-player-fullscreen
 
-安卓 非微信：
+### 安卓 非微信：
+例如安卓下的微博，QQ浏览器等。
+使用了canvas重新绘制视频内容的做法[JSMpeg](https://github.com/phoboslab/jsmpeg)。但因为文件过大渲染和加载非常慢卡顿严重，因此我建议视频每帧控制在1500kbs，但尺寸只导出原来的一半。
 
 ## 使用方法：
 
+```javascript
+
+    var h5vid = new cailven.H5Video();
+    h5vid.init("mp4视频地址用于video标签", "ts视频地址用于canvas", "#videoContainer");
+
+```
+
+## API:
+- play();
+视频播放
+
+- pause();
+暂停
+
+- seek(time);
+跳转到某时间
+
+- destroy();
+销毁
+
+- mute(bool);
+是否静音；true为静音，false为不静音
+
 
 ## 感谢
+[jsmpeg](https://github.com/phoboslab/jsmpeg) 的作者 [Dominic Szablewski](https://github.com/phoboslab);
+[iphone-inline-video](https://github.com/bfred-it/iphone-inline-video)的作者[Federico Brigante](https://github.com/bfred-it)
 
 
