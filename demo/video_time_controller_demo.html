@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
+    <title>H5Video事件控制方法Demo</title>
+    <script src="libs/zepto.min.js"></script>
+    <script src="libs/iphone-inline-video.min.js"></script>
+    <script src="libs/jsmpeg.min.js"></script>
+    <script src="libs/dat.gui.min.js"></script>
+    <script src="../dist/H5Event.js"></script>
+    <script src="../dist/H5Video.js"></script>
+    <script src="../dist/H5VideoController.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            border: 0px;
+            overflow: hidden;
+            position: absolute;
+            background-color: #1c1c1e;
+        }
+    </style>
+</head>
+<body>
+<div id="videoContainer">
+
+</div>
+<script>
+
+    var h5vid = new cailven.H5Video();
+    h5vid.init("../../vid/video.mp4", "../../vid/video.vid", "#videoContainer");
+
+    //setUI
+    var gui = new dat.GUI();
+    var Configuracion = function () {
+        this.play = function () {
+            h5vid.play();
+        };
+        this.pause = function () {
+            h5vid.pause();
+        };
+        this.mute = false;
+        this.seek = 0;
+    }
+    var conf = new Configuracion();
+    var play = gui.add(conf, 'play');
+    var pause = gui.add(conf, 'pause');
+
+    //setTimeEventConfig
+
+    var timeConfig = [
+        {
+            time: 2.0, handle: function () {
+            console.log("point1")
+        }
+        }, {
+            time: 5.0, handle: function () {
+                console.log("point2")
+            }
+        }, {
+            time: 8.0, handle: function () {
+                console.log("point3")
+            }
+        },
+    ]
+
+
+    var h5VidController = new H5VideoController();
+    h5VidController.start(h5vid.player, timeConfig);
+
+
+</script>
+
+</body>
+</html>

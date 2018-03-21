@@ -105,12 +105,7 @@ var cailven;
             }
         };
         H5Video.prototype.seek = function (t) {
-            if (this.isVid) {
-                this.player.seek(t);
-            }
-            else {
-                this.player.currentTime = t;
-            }
+            this.player.currentTime = t;
         };
         H5Video.prototype.destroy = function () {
             if (this.isVid) {
@@ -121,6 +116,7 @@ var cailven;
             else {
                 this.player.volume = 0;
                 this.player.destroy();
+                $("#video-canvas").remove();
             }
         };
         H5Video.prototype.play = function () {

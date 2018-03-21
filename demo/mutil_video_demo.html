@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
+    <title>多视频切换Demo</title>
+    <script src="libs/zepto.min.js"></script>
+    <script src="libs/iphone-inline-video.min.js"></script>
+    <script src="libs/jsmpeg.min.js"></script>
+    <script src="libs/dat.gui.min.js"></script>
+    <script src="../dist/H5Event.js"></script>
+    <script src="../dist/H5Video.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            border: 0px;
+            overflow: hidden;
+            position: absolute;
+            background-color: #1c1c1e;
+        }
+    </style>
+</head>
+<body>
+<div id="videoContainer">
+
+</div>
+<script>
+    //初始化三条视频
+    var h5vid;
+
+    function reset(mp4, vid, container) {
+        if (h5vid) {
+            h5vid.destroy();
+        }
+
+        h5vid = new cailven.H5Video();
+        h5vid.init(mp4, vid, container);
+//        h5vid.init("../../vid/video.mp4", "../../vid/video.vid", "#videoContainer");
+    }
+    //setUI
+    reset("../../vid/video.mp4", "../../vid/video.vid", "#videoContainer")
+
+    var gui = new dat.GUI();
+    var Configuracion = function () {
+        this.vid1 = function () {
+            reset("../../vid/video1.mp4", "../../vid/video1.vid", "#videoContainer")
+        };
+        this.vid2 = function () {
+            reset("../../vid/video2.mp4", "../../vid/video2.vid", "#videoContainer")
+        };
+        this.vid3 = function () {
+            reset("../../vid/video3.mp4", "../../vid/video3.vid", "#videoContainer")
+        };
+
+        this.play = function () {
+            target.play();
+        };
+        this.pause = function () {
+            target.pause();
+        };
+        this.mute = false;
+        this.seek = 0;
+    }
+    var conf = new Configuracion();
+
+    var vid1 = gui.add(conf, 'vid1');
+    var vid1 = gui.add(conf, 'vid2');
+    var vid1 = gui.add(conf, 'vid3');
+
+
+    var play = gui.add(conf, 'play');
+    var pause = gui.add(conf, 'pause');
+
+    var mute = gui.add(conf, 'mute');
+
+    mute.onChange(function (data) {
+        target.mute(data);
+    }.bind(this));
+
+
+</script>
+
+</body>
+</html>

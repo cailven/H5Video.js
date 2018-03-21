@@ -121,11 +121,7 @@ module cailven {
 
 
         public seek(t) {
-            if (this.isVid) {
-                this.player.seek(t);
-            } else {
-                this.player.currentTime = t;
-            }
+            this.player.currentTime = t;
         }
 
         public destroy() {
@@ -136,6 +132,8 @@ module cailven {
             } else {
                 this.player.volume = 0;
                 this.player.destroy();
+                $("#video-canvas").remove();
+
             }
         }
 
@@ -171,8 +169,5 @@ module cailven {
             }
 
         }
-
-
     }
-
 }

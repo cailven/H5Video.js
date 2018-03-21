@@ -46,6 +46,47 @@
 - mute(bool);
 是否静音；true为静音，false为不静音
 
+- isIos();
+是否ios设备；true为ios
+
+- isInWX():
+是否在微信里播放；true为微信
+
+---
+# H5VideoController控件
+
+## 使用方法：
+
+```javascript
+
+   var timeConfig = [
+          {
+              time: 2.0, handle: function () {
+              console.log("point1要做的事情")
+          }
+          }, {
+              time: 5.0, handle: function () {
+                  console.log("point2要做的事情")
+              }
+          }, {
+              time: 8.0, handle: function () {
+                  console.log("point3要做的事情")
+              }
+          },
+      ]
+
+
+      var h5VidController = new H5VideoController();
+      h5VidController.start(h5vid.player, timeConfig);
+
+```
+## API:
+- start(_player, _config)
+开始监控，指定有效的player组件和config配置；config里必须包含time和handle来设置什么时间出发什么事件，精读为0.1秒。
+
+- stop()
+停止监控
+
 
 ## 感谢
 [jsmpeg](https://github.com/phoboslab/jsmpeg) 的作者 [Dominic Szablewski](https://github.com/phoboslab);
