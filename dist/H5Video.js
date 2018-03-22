@@ -80,7 +80,12 @@ var cailven;
                     this.setVideo(mp4);
                 }
                 else {
-                    this.setCanvas(vid);
+                    if (vid == "") {
+                        this.setVideo(mp4);
+                    }
+                    else {
+                        this.setCanvas(vid);
+                    }
                 }
             }
         };

@@ -23,6 +23,29 @@
 
 ## 使用方法：
 
+1. 首先压缩两套视频文件.
+- .mp4视频文件：推荐开源软件[handbrake.fr](https://handbrake.fr/),这个文件将会用于IOS两个版本和安卓版微信。
+- .ts视频文件：使用[ffmpeg](https://ffmpeg.org/)进行压缩，这个文件将会用于安卓非微信环境下，诸如微博，手Q，天猫app等等.
+- 注意：因为我个人使用typescript开发环境所以，.ts视频文件和项目开发代码冲突。所以我手动改成.vid文件。
+
+2. FFMPEG我的压缩率是这样的：
+
+```php
+
+    ffmpeg -i in.mp4 -f mpegts -codec:v mpeg1video -s 375x667 -b:v 1500k -r 30 -bf 0 -codec:a mp2 -ar 44100 -ac 1 -b:a 128k out_qurt.ts
+
+'''
+
+我把尺寸压缩到原来的四分之一，即宽高各是原尺寸视频的一半，但我每秒kbs控制在1500k,这样还原回来的视频清晰度良好。
+
+3. 引入组件代码
+
+```html
+  <script src="../dist/H5Video.js"></script>
+
+```
+
+
 ```javascript
 
     var h5vid = new cailven.H5Video();
@@ -31,6 +54,12 @@
 ```
 
 ## API:
+- init(mp4,ts,videoContainer);
+-- mp4:mp4视频地址用于video标签,必须。
+-- ts:ts视频地址用于canvas,选填，如果不需要适配微博就不用放ts文件。
+-- videoContainer，设置放入组件的html容器。
+
+
 - play();
 视频播放
 
@@ -91,5 +120,6 @@
 ## 感谢
 [jsmpeg](https://github.com/phoboslab/jsmpeg) 的作者 [Dominic Szablewski](https://github.com/phoboslab);
 [iphone-inline-video](https://github.com/bfred-it/iphone-inline-video)的作者[Federico Brigante](https://github.com/bfred-it)
+[《知乎文章-h5视频活动踩坑》](https://zhuanlan.zhihu.com/p/33693226)的作者[jsonLi](https://www.zhihu.com/people/li-yan-47-93/activities)
 
 
