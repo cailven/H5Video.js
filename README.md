@@ -34,7 +34,7 @@
 
     ffmpeg -i in.mp4 -f mpegts -codec:v mpeg1video -s 375x667 -b:v 1500k -r 30 -bf 0 -codec:a mp2 -ar 44100 -ac 1 -b:a 128k out_qurt.ts
 
-'''
+```
 
 我把尺寸压缩到原来的四分之一，即宽高各是原尺寸视频的一半，但我每秒kbs控制在1500k,这样还原回来的视频清晰度良好。
 
