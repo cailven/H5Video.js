@@ -55,9 +55,9 @@
 
 ## API:
 - init(mp4,ts,videoContainer);
--- mp4:mp4视频地址用于video标签,必须。
--- ts:ts视频地址用于canvas,选填，如果不需要适配微博就不用放ts文件。
--- videoContainer，设置放入组件的html容器。
+ > mp4:mp4视频地址用于video标签,必须。
+ > ts:ts视频地址用于canvas,选填，如果不需要适配微博就不用放ts文件。
+ > videoContainer，设置放入组件的html容器。
 
 
 - play();
@@ -118,8 +118,8 @@
 
 
 ## 感谢
-[jsmpeg](https://github.com/phoboslab/jsmpeg) 的作者 [Dominic Szablewski](https://github.com/phoboslab);
-[iphone-inline-video](https://github.com/bfred-it/iphone-inline-video)的作者[Federico Brigante](https://github.com/bfred-it)
-[《知乎文章-h5视频活动踩坑》](https://zhuanlan.zhihu.com/p/33693226)的作者[jsonLi](https://www.zhihu.com/people/li-yan-47-93/activities)
+- [jsmpeg](https://github.com/phoboslab/jsmpeg) 的作者 [Dominic Szablewski](https://github.com/phoboslab);
+- [iphone-inline-video](https://github.com/bfred-it/iphone-inline-video)的作者[Federico Brigante](https://github.com/bfred-it)
+- [《知乎文章-h5视频活动踩坑》](https://zhuanlan.zhihu.com/p/33693226)的作者[jsonLi](https://www.zhihu.com/people/li-yan-47-93/activities)
 
 
