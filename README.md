@@ -40,7 +40,7 @@
 
 3. 引入组件代码
 
-```html
+```php
   <script src="../dist/H5Video.js"></script>
 
 ```
