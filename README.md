@@ -41,14 +41,16 @@
 3. 引入组件代码
 
 ```php
-  <script src="../dist/H5Video.js"></script>
+    <script src="iphone-inline-video.min.js"></script>
+    <script src="jsmpeg.min.js"></script>
+    <script src="H5Video.js"></script>
 
 ```
 
 
 ```javascript
 
-    var h5vid = new cailven.H5Video();
+    var h5vid = new H5Video();
     h5vid.init("mp4视频地址用于video标签", "ts视频地址用于canvas", "#videoContainer");
 
 ```
@@ -83,8 +85,20 @@
 
 ---
 # H5VideoController控件
-
 ## 使用方法：
+
+1. html页面引入组件代码
+
+```php
+    <script src="iphone-inline-video.min.js"></script>
+    <script src="jsmpeg.min.js"></script>
+    <script src="H5Video.js"></script>
+    <script src="H5VideoController.js"></script>
+
+
+```
+
+
 
 ```javascript
 

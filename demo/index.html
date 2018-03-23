@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
     <title>H5VideoDemo</title>
-    <script src="libs/zepto.min.js"></script>
+
     <script src="libs/iphone-inline-video.min.js"></script>
     <script src="libs/jsmpeg.min.js"></script>
-    <script src="libs/dat.gui.min.js"></script>
-    <script src="../dist/H5Event.js"></script>
     <script src="../dist/H5Video.js"></script>
+
+    <script src="libs/dat.gui.min.js"></script>
     <style>
         html, body {
             width: 100%;
@@ -28,40 +28,33 @@
 </div>
 <script>
 
-    var h5vid = new cailven.H5Video();
+    var h5vid = new H5Video();
     h5vid.init("../../vid/video.mp4", "../../vid/video.vid", "#videoContainer");
-
-
     //setUI
-    h5vid.addEvent("canplay", function () {
-        var gui = new dat.GUI();
-        var Configuracion = function () {
-            this.play = function () {
-                h5vid.play();
-            };
-            this.pause = function () {
-                h5vid.pause();
-            };
-            this.mute = false;
-            this.seek = 0;
-        }
-        var conf = new Configuracion();
+    var gui = new dat.GUI();
+    var Configuracion = function () {
+        this.play = function () {
+            h5vid.play();
+        };
+        this.pause = function () {
+            h5vid.pause();
+        };
+        this.mute = false;
+        this.seek = 0;
+    }
+    var conf = new Configuracion();
 
-        var play = gui.add(conf, 'play');
-        var pause = gui.add(conf, 'pause');
-        var seek = gui.add(conf, 'seek', 0, h5vid.duration);
-        var mute = gui.add(conf, 'mute');
+    var play = gui.add(conf, 'play');
+    var pause = gui.add(conf, 'pause');
+    var seek = gui.add(conf, 'seek', 0, 100);
+    var mute = gui.add(conf, 'mute');
 
-        mute.onChange(function (data) {
-            h5vid.mute(data);
-        }.bind(this));
-        seek.onChange(function (data) {
-            h5vid.seek(data)
-
-        }.bind(this))
-
-
-    });
+    mute.onChange(function (data) {
+        h5vid.mute(data);
+    }.bind(this));
+    seek.onChange(function (data) {
+        h5vid.seek(data)
+    }.bind(this))
 
 
 </script>
