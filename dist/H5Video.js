@@ -82,16 +82,20 @@ var H5Video = (function () {
     H5Video.prototype.seek = function (t) {
         this.player.currentTime = t;
     };
+    H5Video.prototype.remove = function (el) {
+        console.log(el);
+        el.parentNode.removeChild(el);
+    };
     H5Video.prototype.destroy = function () {
         if (this.isVid) {
             this.player.muted;
             this.player.pause();
-            $("#video").remove();
+            this.remove(this.player);
         }
         else {
             this.player.volume = 0;
             this.player.destroy();
-            $("#video-canvas").remove();
+            this.remove(this.player.renderer.canvas);
         }
     };
     H5Video.prototype.play = function () {

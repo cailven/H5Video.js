@@ -1,9 +1,10 @@
-class H5Video  {
+class H5Video {
     constructor() {
     }
 
     public player;
     public isVid;
+
     private setCanvas(vid_url:string) {
         this.isVid = false;
         var s = this;
@@ -15,6 +16,7 @@ class H5Video  {
             canvas: canvas,
         });
     }
+
     private setVideo(vid_url:string) {
         this.player = document.createElement("video");
         this.player.setAttribute("width", "100%");
@@ -37,13 +39,16 @@ class H5Video  {
             enableInlineVideo(this.player);
         }
     }
+
     private addCss(_stlye:string) {
         var style = document.createElement('style');
         style.type = 'text/css';
         style.innerHTML = _stlye;
         document.getElementsByTagName('head')[0].appendChild(style);
     }
+
     private containerName:string = "";
+
     public init(mp4:string, vid:string, container:string) {
         this.containerName = container;
         if (this.isInWX()) {
@@ -60,6 +65,7 @@ class H5Video  {
             }
         }
     }
+
     public isIos():boolean {
         var u = navigator.userAgent;
         if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
@@ -68,6 +74,7 @@ class H5Video  {
             return false;
         }
     }
+
     public isInWX():boolean {
         var ua:string = navigator.userAgent.toLowerCase();
         var t:string = ua.match(/MicroMessenger/i) + "";
@@ -77,27 +84,36 @@ class H5Video  {
             return false;
         }
     }
+
     public seek(t) {
         this.player.currentTime = t;
     }
+
+    private remove(el) {
+        console.log(el);
+        el.parentNode.removeChild(el);
+    }
+
     public destroy() {
         if (this.isVid) {
             this.player.muted;
             this.player.pause();
-            $("#video").remove();
+            this.remove(this.player);
         } else {
             this.player.volume = 0;
             this.player.destroy();
-            $("#video-canvas").remove();
-
+            this.remove(this.player.renderer.canvas);
         }
     }
+
     public play() {
         this.player.play();
     }
+
     public pause() {
         this.player.pause();
     }
+
     public mute(bool) {
         if (bool) {
             if (this.isVid) {
